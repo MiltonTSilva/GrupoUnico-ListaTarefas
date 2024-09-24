@@ -2,16 +2,12 @@ using Microsoft.EntityFrameworkCore;
 using Api.Dominio.Entidades;
 using Api.Dominio.Enuns;
 
-namespace MininalApi.Infraestrutura.Db;
+namespace api.Infraestrutura.Db;
 
-public class DbContexto : DbContext
+public class DbContexto(IConfiguration configuration) : DbContext
 {
-    private readonly IConfiguration _configuration;
+    private readonly IConfiguration _configuration = configuration;
 
-    public DbContexto(IConfiguration configuration)
-    {
-        _configuration = configuration;
-    }
     public DbSet<Tarefa> Tarefas { get; set; }
 
 
