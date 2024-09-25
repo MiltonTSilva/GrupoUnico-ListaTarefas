@@ -1,7 +1,8 @@
-namespace Api.Extensao;
+namespace Api.Extensoes;
 
-public static class AppExtensoes
+public static class AppExtensao
 {
+
     public static void UseArquitetura(this WebApplication app)
     {
 
@@ -18,6 +19,5 @@ public static class AppExtensoes
 
         app.UseHttpsRedirection();
         #endregion
-
     }
 }

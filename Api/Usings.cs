@@ -1,1 +1,1 @@
-global using Api.Extensao;
+global using Api.Extensoes;
