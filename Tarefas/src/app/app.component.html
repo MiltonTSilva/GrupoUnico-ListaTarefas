@@ -1,7 +1,40 @@
 
-<ul>
-    @for (tarefa of tarefas; track $index) {
-      <li>{{ tarefa.titulo }}</li>
-    }
-</ul>
+
   
+
+<div class="container py-4 bg-white rounded">
+
+  <div class="row d-flex justify-content-center">
+      <div class="col-md-8 mb-3 mb-sm-0" >
+        <ul>
+          @for (tarefa of tarefas; track $index) {
+            <li>
+              <div class="card">
+                <div class="card-body">
+                  
+                    <h5 class="card-title">Titulo: {{ tarefa?.titulo }}</h5>
+
+                    <h6 class="card-subtitle mb-2 text-muted font-weight-normal">
+                        Descrição: {{ tarefa?.descricao }}
+                    </h6>
+
+                    <p class="card-text">
+                       Data da Tarefa: {{ tarefa?.dataTarefa ? formatarData(tarefa.dataTarefa) : 'Carregando...' }} 
+                    </p>
+
+                    Status da tarefa: <span class="card-text" [ngStyle]="{
+                      'color': tarefa?.status === 0 ? 'orange' :
+                               tarefa?.status === 1 ? 'green' :
+                               tarefa?.status === 'failed' ? 'red' : 'black'
+                      }">
+                      {{ tarefa?.status | status }}
+                    </span>
+                </div>
+            </div>
+            </li>
+            <br>
+          }
+      </ul>
+      </div>
+  </div>
+</div>
