@@ -4,7 +4,19 @@ public static class BuilderExtensao
 {
     public static WebApplicationBuilder AddArquitetura(this WebApplicationBuilder builder)
     {
+
         builder.Services.AddEndpointsApiExplorer();
+
+        var origemAngular = builder.Configuration.GetValue<string>("OrigemAngular")!.Split(",");
+        builder.Services.AddCors(opcao =>
+        {
+
+            opcao.AddDefaultPolicy(politica =>
+            {
+                politica.WithOrigins("origemAngular").AllowAnyHeader().AllowAnyMethod();
+            });
+        });
+
         builder.Services.AddSwaggerGen();
 
         return builder;

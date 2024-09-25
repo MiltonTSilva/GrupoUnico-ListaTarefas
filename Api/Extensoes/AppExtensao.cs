@@ -16,8 +16,9 @@ public static class AppExtensao
                 c.RoutePrefix = string.Empty;
             });
         }
+        #endregion
 
         app.UseHttpsRedirection();
-        #endregion
+        app.UseCors();
     }
 }
