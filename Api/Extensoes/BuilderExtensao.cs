@@ -1,7 +1,3 @@
-using api.Infraestrutura.Db;
-using Api.Dominio.Interfaces;
-using Api.Dominio.Servicos;
-
 namespace Api.Extensoes;
 
 public static class BuilderExtensao

@@ -1,8 +1,4 @@
-using Microsoft.EntityFrameworkCore;
-using Api.Dominio.Entidades;
-using Api.Dominio.Enuns;
-
-namespace api.Infraestrutura.Db;
+namespace Api.Infraestrutura.Db;
 
 public class DbContexto(IConfiguration configuration) : DbContext
 {

@@ -1,9 +1,6 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿#nullable disable
 
-#nullable disable
-
-namespace api.Migrations
+namespace Api.Migrations
 {
     /// <inheritdoc />
     public partial class Inicial : Migration

@@ -1,8 +1,3 @@
-using api.Infraestrutura.Db;
-using Api.Dominio.Entidades;
-using Api.Dominio.Enuns;
-using Api.Dominio.Interfaces;
-using Microsoft.EntityFrameworkCore;
 
 namespace Api.Dominio.Servicos;
 public class TarefaServico(DbContexto contexto) : ITarefa
@@ -109,7 +104,7 @@ public class TarefaServico(DbContexto contexto) : ITarefa
             lista = [.. _contexto.Tarefas.Where(w => w.DataTarefa == dataTarefa)];
         }
 
-       if (!string.IsNullOrEmpty(status))
+        if (!string.IsNullOrEmpty(status))
         {
             lista = [.. _contexto.Tarefas.Where(w => w.Status == statusEnum)];
         }

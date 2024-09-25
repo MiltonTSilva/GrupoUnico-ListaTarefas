@@ -2,7 +2,6 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Api.Dominio.Enuns;
 
-
 namespace Api.Dominio.Entidades;
 
 public class Tarefa

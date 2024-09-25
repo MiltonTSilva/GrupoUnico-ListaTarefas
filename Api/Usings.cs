@@ -1,1 +1,12 @@
 global using Api.Extensoes;
+global using Api.Infraestrutura.Db;
+global using Api.Dominio.Interfaces;
+global using Api.Dominio.Servicos;
+global using Microsoft.EntityFrameworkCore;
+global using Api.Dominio.Entidades;
+global using Api.Dominio.Enuns;
+global using Microsoft.EntityFrameworkCore.Migrations;
+global using Microsoft.EntityFrameworkCore.Infrastructure;
+global using Microsoft.AspNetCore.Mvc;
+global using System.ComponentModel.DataAnnotations;
+global using System.ComponentModel.DataAnnotations.Schema;
