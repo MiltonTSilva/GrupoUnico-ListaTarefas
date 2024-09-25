@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { TarefasService } from './Servicos/tarefas.service';
 
 @Component({
   selector: 'app-root',
@@ -9,5 +10,10 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'Sistema de gerenciamento de Tarefas';
+  tarefasServico = inject(TarefasService);
+  tarefas: any[] = [];
+
+  constructor(){
+	  this.tarefasServico.ObterTarefas().subscribe(dadosRetornado => { this.tarefas = dadosRetornado;});
+  }
 }

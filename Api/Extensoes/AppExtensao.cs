@@ -18,7 +18,6 @@ public static class AppExtensao
         }
         #endregion
 
-        app.UseHttpsRedirection();
         app.UseCors();
     }
 }

@@ -8,12 +8,13 @@ public static class BuilderExtensao
         builder.Services.AddEndpointsApiExplorer();
 
         var origemAngular = builder.Configuration.GetValue<string>("OrigemAngular")!.Split(",");
+
         builder.Services.AddCors(opcao =>
         {
 
             opcao.AddDefaultPolicy(politica =>
             {
-                politica.WithOrigins("origemAngular").AllowAnyHeader().AllowAnyMethod();
+                politica.WithOrigins("origemAngular").AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
             });
         });
 
