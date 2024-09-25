@@ -91,12 +91,12 @@ public class TarefaServico(DbContexto contexto) : ITarefa
 
         if (!string.IsNullOrEmpty(titulo))
         {
-            lista = [.. _contexto.Tarefas.Where(w => w.Titulo.Contains(titulo, StringComparison.CurrentCultureIgnoreCase))];
+            lista = [.. _contexto.Tarefas.Where(w => w.Titulo.ToLower().Contains(titulo.ToLower()))];
         }
 
         if (!string.IsNullOrEmpty(descricao))
         {
-            lista = [.. _contexto.Tarefas.Where(w => w.Descricao.Contains(descricao, StringComparison.CurrentCultureIgnoreCase))];
+            lista = [.. _contexto.Tarefas.Where(w => w.Descricao.ToLower().Contains(descricao.ToLower()))];
         }
 
         if (dataTarefa != null)

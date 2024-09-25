@@ -287,3 +287,6 @@ __pycache__/
 *.btm.cs
 *.odx.cs
 *.xsd.cs
+
+# Ignorar o cache do Angular
+.angular/cache/17.3.9
