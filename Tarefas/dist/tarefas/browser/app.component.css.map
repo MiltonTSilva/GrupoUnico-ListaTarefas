@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/app.component.css"],
+  "sourcesContent": ["ul{\r\n    list-style-type: none;\r\n}\r\n"],
+  "mappings": ";AAAA;AACI,mBAAiB;AACrB;",
+  "names": []
+}
