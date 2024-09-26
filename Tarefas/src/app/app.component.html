@@ -1,4 +1,4 @@
-<div style="text-align:center">
+<div style="text-align:center; margin-top: 5px; margin-bottom: 5px;">
   <button class="btn btn-primary" (click)="toggleNovaTarefa()">
     {{ mostrarNovaTarefa ? 'Cancelar' : 'Adicionar Tarefa' }}
   </button>
@@ -8,9 +8,12 @@
   </div>
 </div>
 
+<div *ngIf="tarefaEmEdicao">
+  <app-alterar-tarefa [tarefa]="tarefaEmEdicao" (tarefaAlterada)="atualizarListaTarefas()"></app-alterar-tarefa>
+  <!-- <button class="btn btn-secondary" (click)="fecharFormulario()">Cancelar</button> -->
+</div>
 
 <div class="container py-4 bg-white rounded">
-
   <div class="row d-flex justify-content-center">
       <div class="col-md-8 mb-3 mb-sm-0" >
         <ul>
@@ -29,23 +32,38 @@
                        Data da Tarefa: {{ tarefa?.dataTarefa ? formatarData(tarefa.dataTarefa) : 'Carregando...' }} 
                     </p>
 
-                    Status da tarefa: <span class="card-text" [ngStyle]="{
+                  Status da tarefa: <span class="card-text" [ngStyle]="{
                       'color': tarefa?.status === 0 ? 'orange' :
                                tarefa?.status === 1 ? 'green' :
                                tarefa?.status === 'failed' ? 'red' : 'black'
                       }">
                       {{ tarefa?.status | status }}
-                    </span>
-                    <p>
-                      <button class="btn btn-sm btn-outline-primary">Editar</button>
-                      <button class="btn btn-sm btn-danger mx-2">Remover</button>
-                    </p>
-                      <div>                        
-                        <label>
-                          <input type="checkbox" name="status" value="Concluido" />
-                          Concluído
-                        </label>
+                    </span> 
+
+                  <div style="margin-top: 10px;">
+                                           
+                      <div style="text-align:center">
+    <!--                     <button class="btn btn-sm btn-outline-primary" (click)="toggleAlterarTarefa()">
+                          {{ mostrarAlterarTarefa ? 'Cancelar' : 'Alterar Tarefa' }}
+                        </button> -->
+                        <button class="btn btn-sm btn-outline-primary" (click)="abrirFormularioEdicao(tarefa)">
+                          Alterar Tarefa
+                        </button>
+                       <!--  <div *ngIf="mostrarAlterarTarefa">
+                          <app-alterar-tarefa (tarefaAlterada)="atualizarListaTarefas()"></app-alterar-tarefa>
+                        </div> -->
+                        <button class="btn btn-sm btn-danger mx-2"  (click)="removerTarefa(tarefa)">Remover</button> 
                       </div>
+                       
+                    </div>  
+
+                    <div style="text-align:right;">   
+                                     
+                      <label *ngIf="tarefa.status == 0">           
+                        <input type="checkbox" name="status" value="0"  (change)="onCheckboxChange($event,tarefa.id)" />
+                        Concluir tarefa 
+                      </label>
+                    </div>
                     
                 </div>
 
@@ -57,6 +75,8 @@
       </div>
   </div>
 
+
+
   <div *ngIf="tarefas.length === 0;">
     <p>Não há tarefas para mostrar nesta página.</p>
   </div>
@@ -64,8 +84,8 @@
   
     <div style="text-align:center">
       <button class="btn btn-secondary" (click)="mudarPagina(-1)" [disabled]="pagina === 0">Anterior</button>
-      <span> Página {{ pagina + 1 }} </span> 
-      <span *ngIf="tarefas.length > 0;">
+      <span> Página {{ pagina  }} </span> 
+      <span *ngIf="tarefas.length > 0;"> 
         <button class="btn btn-secondary" (click)="mudarPagina(1)">Próximo</button>
       </span>
     </div>

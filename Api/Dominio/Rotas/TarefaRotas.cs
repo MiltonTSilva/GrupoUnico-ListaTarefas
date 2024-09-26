@@ -78,6 +78,30 @@ public static class TarefaRotas
             }
         }).WithTags("Tarefa");
 
+        app.MapPatch("/Tarefa/{id}/", async ([FromRoute] int id, [FromBody] int status, [FromServices] ITarefa Tarefa) =>
+        {
+            Console.WriteLine("Chegou aqui na api");
+
+            var resultado = Tarefa.BuscarPorId(id);
+
+            if (resultado == null)
+            {
+                return Results.NotFound();
+            }
+
+            try
+            {
+                var erro = await Tarefa.AtualizarStatus(id, (Status)status);
+
+                return Results.Ok(resultado);
+            }
+            catch (Exception ex)
+            {
+                // Log the exception (ex) if necessary
+                return Results.Problem("Ocorreu um erro ao atualizar o status da tarefa.", ex.Message);
+            }
+        }).WithTags("Tarefa");
+
         app.MapDelete("/Tarefa/{id}", ([FromRoute] int id, ITarefa Tarefa) =>
         {
             var resultado = Tarefa.BuscarPorId(id);

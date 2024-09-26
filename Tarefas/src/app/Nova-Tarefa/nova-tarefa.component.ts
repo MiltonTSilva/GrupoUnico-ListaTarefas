@@ -34,23 +34,18 @@ export class NovaTarefaComponent {
         
         this.tarefasServico.adicionarTarefa(novaTarefa).pipe(
             tap(response => {
-                console.log('Tarefa adicionada com sucesso:', response);
                 this.limparCampos();
                 this.errorMessage = '';
                 this.tarefaAdicionada.emit();
             })
           ).subscribe({
             next: (response) => {
-              // Se precisar lidar com a resposta aqui
             },
             error: (error) => {
-              console.error('Erro ao adicionar tarefa:', error);
-              
-              // Verifica se a API retornou uma mensagem de erro
               if (error.error && Array.isArray(error.error) && error.error.length > 0) {
-                this.errorMessage = error.error.message; // Usa a mensagem de erro retornada pela API
+                this.errorMessage = error.error.message; 
               } else {
-                this.errorMessage = 'Ocorreu um erro ao adicionar a tarefa. Tente novamente.'; // Mensagem padrão
+                this.errorMessage = 'Ocorreu um erro ao incluir a tarefa. Tente novamente.'; 
               }
             }
           });
